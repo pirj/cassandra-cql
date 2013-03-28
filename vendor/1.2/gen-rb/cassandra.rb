@@ -5,10 +5,10 @@
 #
 
 require 'thrift'
-require 'cassandra_types'
+require File.join(File.dirname(__FILE__), 'cassandra_types')
 
-module CassandraThrift
-  module Cassandra
+module CassandraCQL
+  module Thrift
     class Client
       include ::Thrift::Client
 
