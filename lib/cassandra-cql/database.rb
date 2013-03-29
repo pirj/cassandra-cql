@@ -95,8 +95,8 @@ module CassandraCQL
       raise Error::InvalidRequestException.new($!.why)
     end
 
-    def execute_cql_query(cql, compression=CassandraCQL::Thrift::Compression::NONE)
-      @connection.execute_cql_query(cql, compression)
+    def execute_cql3_query(cql, compression=CassandraCQL::Thrift::Compression::NONE, consistency=CassandraThrift::ConsistencyLevel::QUORUM)
+      @connection.execute_cql3_query(cql, compression, consistency)
     rescue CassandraCQL::Thrift::InvalidRequestException
       raise Error::InvalidRequestException.new($!.why)
     end

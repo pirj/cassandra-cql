@@ -4,3 +4,12 @@ module CassandraCQL
     end
   end
 end
+
+module CassandraCQL
+  module Thrift
+    include CassandraThrift
+
+    class Client < CassandraThrift::Cassandra::Client
+    end
+  end
+end
