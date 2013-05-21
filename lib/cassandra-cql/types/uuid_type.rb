@@ -18,8 +18,7 @@ module CassandraCQL
   module Types
     class UUIDType < AbstractType
       def self.cast(value)
-        value << "\00" if value.size == 15
-        UUID.new(value)
+        UUID.new(value.force_encoding('ASCII-8BIT'))
       rescue => e
         raise CassandraCQL::Error::CastException, "Unable to convert bytes to UUID: #{value.inspect}", caller
       end
